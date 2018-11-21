@@ -32,9 +32,9 @@ Hints:
 ```{r}
 wiki <- read_html("https://en.wikipedia.org/wiki/List_of_United_States_cities_by_crime_rate")
 wiki1 <- html_nodes(wiki, css = "table")
-html_table(wiki1, header = TRUE, fill = TRUE)
+wiki11 <- html_table(wiki1, header = TRUE, fill = TRUE)
 
-wiki2 <- html_table(wiki1, header = TRUE, fill = TRUE)[[2]]
+wiki2 <- html_table(wiki11, header = TRUE, fill = TRUE)[[2]]
 
 crimes <- as.data.frame(wiki2)[-c(1),c(1, 2, 4, 9)]
 
