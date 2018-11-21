@@ -29,12 +29,12 @@ Hints:
 - after reading in the table using `html_table()`, create a data frame with just the columns you want, using a command such as: `crimes3 <- as.data.frame(crimes2)[,c(LIST OF COLUMN NUMBERS)]`.  Otherwise, R gets confused since it appears as if several columns all have the same column name.
 - then, turn `crimes3` into a tibble with `as.tibble(crimes3)` and do necessary tidying: get rid of unneeded rows, parse columns into proper format, etc.
 
-```{r}
+```{r, eval=TRUE}
 wiki <- read_html("https://en.wikipedia.org/wiki/List_of_United_States_cities_by_crime_rate")
 wiki1 <- html_nodes(wiki, css = "table")
-wiki11 <- html_table(wiki1, header = TRUE, fill = TRUE)
 
-wiki2 <- html_table(wiki11, header = TRUE, fill = TRUE)[[2]]
+
+wiki2 <- html_table(wiki1, header = TRUE, fill = TRUE)[[2]]
 
 crimes <- as.data.frame(wiki2)[-c(1),c(1, 2, 4, 9)]
 
